@@ -1,7 +1,8 @@
 from ctypes import *
 from ctypes.wintypes import *
 
-from flag import Flag, FlagMapper
+from windows.generated_def.flag import Flag, FlagMapper
+
 
 class EnumValue(Flag):
     def __new__(cls, enum_name, name, value):

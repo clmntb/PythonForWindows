@@ -1,5 +1,6 @@
 import platform
-from flag import make_flag
+
+from windows.generated_def.flag import make_flag
 
 bits = platform.architecture()[0]
 bitness =  int(bits[:2])
