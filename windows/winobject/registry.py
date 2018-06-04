@@ -1,4 +1,8 @@
-import _winreg
+try:
+    import _winreg
+except ImportError:
+    import winreg
+    _winreg = winreg
 import itertools
 import struct
 from collections import namedtuple

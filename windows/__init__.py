@@ -19,8 +19,8 @@ if sys.platform != "win32":
 from windows import winproxy
 from windows import winobject
 
-from winobject.system import System
-from winobject.process import CurrentProcess, CurrentThread, WinProcess, WinThread
+from windows.winobject.system import System
+from windows.winobject.process import CurrentProcess, CurrentThread, WinProcess, WinThread
 
 
 system = System()

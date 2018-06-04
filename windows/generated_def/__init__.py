@@ -1,4 +1,4 @@
-from . import winstructs
+from windows.generated_def import winstructs
 
 def bitness():
     """Return 32 or 64"""

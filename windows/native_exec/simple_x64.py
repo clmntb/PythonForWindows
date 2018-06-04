@@ -85,7 +85,10 @@ class Prefix(object):
         return type(self)(other)
 
     def get_code(self):
-        return chr(self.PREFIX_VALUE) + self.next.get_code()
+        try:
+            return chr(self.PREFIX_VALUE) + self.next.get_code()
+        except TypeError:
+            return bytes([self.PREFIX_VALUE]) + self.next.get_code()
 
 
 def create_prefix(name, value):
@@ -737,6 +740,10 @@ instr_state = collections.namedtuple('instr_state', ['previous', 'prefixes', 'ty
 class Instruction(object):
     encoding = []
     default_rex = BitArray.from_int(8, 0x40)
+    
+    def __new__(cls, *initial_args):
+        return super(Instruction, cls).__new__(cls)
+    
 
     def __init__(self, *initial_args):
         for type_encoding in self.encoding:
@@ -765,7 +772,10 @@ class Instruction(object):
         raise ValueError("Cannot encode <{0} {1}>:(".format(type(self).__name__, initial_args))
 
     def get_code(self):
-        prefix_opcode = b"".join(chr(p.PREFIX_VALUE) for p in self.prefix)
+        try:
+            prefix_opcode = b"".join(chr(p.PREFIX_VALUE) for p in self.prefix)
+        except TypeError:
+            prefix_opcode = b"".join(bytes([p.PREFIX_VALUE]) for p in self.prefix)
         return prefix_opcode + bytes(self.value.dump())
 
     def __mul__(self, value):
@@ -790,6 +800,8 @@ class JmpType(Instruction):
             if isinstance(arg, str) and arg[0] == ":":
                 return DelayedJump(cls, arg)
         return super(JmpType, cls).__new__(cls, *initial_args)
+        #except TypeError:
+        #    return super(JmpType, cls).__new__(cls)
 
 
 class Push(Instruction):

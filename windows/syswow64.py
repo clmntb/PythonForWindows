@@ -7,10 +7,10 @@ import functools
 import windows
 import windows.native_exec.simple_x86 as x86
 import windows.native_exec.simple_x64 as x64
-from generated_def.winstructs import *
+from windows.generated_def.winstructs import *
 from windows.winobject import process
 from windows import winproxy
-from winproxy import NeededParameter, NtdllProxy, error_ntstatus
+from windows.winproxy import NeededParameter, NtdllProxy, error_ntstatus
 
 # Special code for syswow64 process
 CS_32bits = 0x23

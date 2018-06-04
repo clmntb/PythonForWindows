@@ -73,7 +73,10 @@ class Prefix(object):
         return type(self)(other)
 
     def get_code(self):
-        return chr(self.PREFIX_VALUE) + self.next.get_code()
+        try:
+            return chr(self.PREFIX_VALUE) + self.next.get_code()
+        except TypeError:
+            return bytes([self.PREFIX_VALUE]) + self.next.get_code()
 
 
 def create_prefix(name, value):
@@ -553,6 +556,10 @@ class Instruction(object):
     """Base class of instructions, use `encoding` to find a valid way to assemble the instruction"""
     encoding = []
 
+    def __new__(cls, *initial_args):
+        return super(Instruction, cls).__new__(cls)
+    
+    
     def __init__(self, *initial_args):
         for type_encoding in self.encoding:
             args = list(initial_args)
@@ -573,7 +580,10 @@ class Instruction(object):
         raise ValueError("Cannot encode <{0} {1}>:(".format(type(self).__name__, initial_args))
 
     def get_code(self):
-        prefix_opcode = b"".join(chr(p.PREFIX_VALUE) for p in self.prefix)
+        try:
+            prefix_opcode = b"".join(chr(p.PREFIX_VALUE) for p in self.prefix)
+        except TypeError:
+            prefix_opcode = b"".join(bytes([p.PREFIX_VALUE]) for p in self.prefix)
         return prefix_opcode + bytes(self.value.dump())
 
     #def __add__(self, other):

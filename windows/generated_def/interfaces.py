@@ -1,4 +1,4 @@
-from winstructs import *
+from windows.generated_def.winstructs import *
 import functools
 import ctypes
 
