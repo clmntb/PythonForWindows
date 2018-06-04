@@ -5,12 +5,14 @@ import re
 import glob
 import textwrap
 
-if sys.version_info[0] == 3:
+try:
+    import StringIO
+except ImportError:
     import io
     StringIO = io
+
+if sys.version_info[0] > 2:
     long = int
-else:
-    import StringIO
 
 import shutil
 

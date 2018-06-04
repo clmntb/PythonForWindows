@@ -9,6 +9,7 @@ class WinDef(object):
         self.code = code
 
     def generate_ctypes(self):
+        # This check is made to remove the L from Longs, removed in python3
         if self.code[-1] == "L":
             try:
                 int(self.code[:-1])

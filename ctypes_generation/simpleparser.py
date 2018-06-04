@@ -1,11 +1,11 @@
 import sys
 import collections
 
-if sys.version_info[0] == 3:
+try:
+    import StringIO
+except ImportError:
     import io
     StringIO = io
-else:
-    import StringIO
 
 
 TupleToken = collections.namedtuple('Token', ['value'])
