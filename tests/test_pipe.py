@@ -1,5 +1,5 @@
 import windows.pipe
-from pfwtest import *
+from tests.pfwtest import *
 
 import time
 

@@ -1,7 +1,7 @@
 import pytest
 import windows
 
-from pfwtest import *
+from tests.pfwtest import *
 
 @check_for_gc_garbage
 class TestSystemWithCheckGarbage(object):

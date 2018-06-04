@@ -5,7 +5,7 @@ import tempfile
 from datetime import datetime, timedelta
 import windows.utils
 import windows.generated_def as gdef
-from pfwtest import *
+from tests.pfwtest import *
 
 pytestmark = pytest.mark.usefixtures('check_for_gc_garbage')
 

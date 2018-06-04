@@ -1,10 +1,11 @@
 import pytest
 
+import base64
 import windows.crypto
 import windows.generated_def as gdef
 import windows.crypto.generation
 
-from pfwtest import *
+from tests.pfwtest import *
 
 pytestmark = pytest.mark.usefixtures('check_for_gc_garbage')
 
@@ -57,12 +58,12 @@ DgMCGgQU70h/rEXLQOberGvgJenggoWU5poEFCfdE1wNK1M38Yp3+qfjEqNIJGCPAgIH0A==
 
 @pytest.fixture()
 def rawcert():
-    return TEST_CERT.decode("base64")
+    return base64.b64decode(TEST_CERT)
 
 
 @pytest.fixture()
 def rawpfx():
-    return TEST_PFX.decode("base64")
+    return base64.b64decode(TEST_PFX)
 
 PFW_TEST_TMP_KEY_CONTAINER = "PythonForWindowsTMPContainerTest"
 RANDOM_CERTIF_NAME = "PythonForWindowsGeneratedRandomCertifTest"

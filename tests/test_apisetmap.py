@@ -5,7 +5,7 @@ import pytest
 import windows.generated_def as gdef
 from windows.winobject.apisetmap import get_api_set_map_for_current_process
 
-from pfwtest import *
+from tests.pfwtest import *
 
 # Late getattr param si these can be at the end od the file
 @pytest.fixture(params=[

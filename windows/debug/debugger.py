@@ -12,7 +12,7 @@ from windows.dbgprint import dbgprint
 from windows import winproxy
 from windows.generated_def.winstructs import *
 from windows.generated_def import windef
-from .breakpoints import *
+from windows.debug.breakpoints import *
 
 #from windows.syswow64 import CS_32bits
 from windows.winobject.exception import VectoredException

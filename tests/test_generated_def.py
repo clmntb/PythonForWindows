@@ -2,7 +2,7 @@ import pytest
 import windows
 import windows.remotectypes as rctypes
 
-from pfwtest import *
+from tests.pfwtest import *
 
 def assert_struct_offset(struct, field, offset):
     assert getattr(struct, field).offset == offset

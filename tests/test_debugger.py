@@ -8,8 +8,8 @@ import windows.generated_def as gdef
 import windows.native_exec.simple_x86 as x86
 import windows.native_exec.simple_x64 as x64
 
-from conftest import generate_pop_and_exit_fixtures, pop_proc_32, pop_proc_64
-from pfwtest import *
+from tests.conftest import generate_pop_and_exit_fixtures, pop_proc_32, pop_proc_64
+from tests.pfwtest import *
 
 proc32_debug = generate_pop_and_exit_fixtures([pop_proc_32], ids=["proc32dbg"], dwCreationFlags=gdef.DEBUG_PROCESS)
 proc64_debug = generate_pop_and_exit_fixtures([pop_proc_64], ids=["proc64dbg"], dwCreationFlags=gdef.DEBUG_PROCESS)
@@ -182,7 +182,7 @@ def test_simple_breakpoint_name_addr(proc32_64_debug, bptype):
     d.loop()
     assert TSTBP.COUNTER == 1
 
-import dbg_injection
+import tests.dbg_injection
 
 def test_hardware_breakpoint_name_addr(proc32_64_debug):
     """Check that name addr in HXBP are trigger in all threads"""

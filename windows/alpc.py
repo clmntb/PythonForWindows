@@ -6,6 +6,11 @@ import windows
 from windows import winproxy
 from windows import generated_def as gdef
 
+PY3 = False
+if sys.version_info[0] > 2:
+    PY3 = True
+    long = int
+    basestring = str
 
 ## For 64b python
 # 0x1f: 0x80000000: ALPC_MESSAGE_SECURITY_ATTRIBUTE(0x80000000) : size=0x18?

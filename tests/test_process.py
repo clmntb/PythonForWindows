@@ -12,7 +12,7 @@ import windows.generated_def as gdef
 import windows.native_exec.simple_x86 as x86
 import windows.native_exec.simple_x64 as x64
 
-from pfwtest import *
+from tests.pfwtest import *
 
 @check_for_gc_garbage
 class TestCurrentProcessWithCheckGarbage(object):

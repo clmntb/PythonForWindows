@@ -6,7 +6,7 @@ import collections
 import windows
 import windows.generated_def as gdef
 
-from pfwtest import is_windows_32_bits, is_process_32_bits, test_binary_name, DEFAULT_CREATION_FLAGS
+from tests.pfwtest import is_windows_32_bits, is_process_32_bits, test_binary_name, DEFAULT_CREATION_FLAGS
 
 
 if is_windows_32_bits:

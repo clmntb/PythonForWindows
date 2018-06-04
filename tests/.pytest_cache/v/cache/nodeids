@@ -1,0 +1,10 @@
+[
+  "test_crypto.py::test_certificate",
+  "test_crypto.py::test_pfx",
+  "test_crypto.py::test_open_pfx_bad_password",
+  "test_crypto.py::test_encrypt_decrypt",
+  "test_crypto.py::test_randomkeypair",
+  "test_crypto.py::test_encrypt_decrypt_multiple_receivers",
+  "test_crypto.py::test_crypt_obj",
+  "test_crypto.py::test_certificate_from_store"
+]

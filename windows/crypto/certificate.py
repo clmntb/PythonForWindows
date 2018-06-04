@@ -1,3 +1,4 @@
+import sys
 import itertools
 import ctypes
 
@@ -9,6 +10,11 @@ from windows.crypto import DEFAULT_ENCODING
 
 import windows.crypto.cryptmsg
 
+PY3 = False
+if sys.version_info[0] > 2:
+    PY3 = True
+    long = int
+    basestring = str
 
 CRYPT_OBJECT_FORMAT_TYPE = [
     gdef.CERT_QUERY_OBJECT_FILE,

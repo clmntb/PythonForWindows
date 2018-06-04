@@ -23,8 +23,10 @@ def get_func_addr(dll_name, func_name):
         if not dll_name.lower().endswith(".dll"):
             dll_name += ".dll"
         mod = [x for x in modules if x.name == dll_name][0]
-        return mod.pe.exports[func_name]
-
+        try:
+            return mod.pe.exports[func_name]
+        except KeyError:
+            return mod.pe.exports[func_name.encode("utf-8")]
 
 def get_remote_func_addr(target, dll_name, func_name):
         name_modules = [m for m in target.peb.modules if m.name == dll_name]

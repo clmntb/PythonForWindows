@@ -5,7 +5,7 @@ import time
 import windows.alpc
 import windows.generated_def as gdef
 
-from pfwtest import *
+from tests.pfwtest import *
 
 
 def generate_client_server_test(client_function, server_function):
