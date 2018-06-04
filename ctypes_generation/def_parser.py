@@ -1,4 +1,3 @@
-import sys
 from winstruct import WinStruct, WinStructType, Ptr
 import dummy_wintypes
 from simpleparser import *
@@ -10,7 +9,7 @@ class WinDef(object):
         self.code = code
 
     def generate_ctypes(self):
-        if sys.version_info[0] == 3 and self.code[-1] == "L":
+        if self.code[-1] == "L":
             try:
                 int(self.code[:-1])
             except ValueError:
