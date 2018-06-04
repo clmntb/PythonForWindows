@@ -4,7 +4,13 @@ import os.path
 import re
 import glob
 import textwrap
-import StringIO
+
+if sys.version_info[0] == 3:
+    import io
+    StringIO = io
+    long = int
+else:
+    import StringIO
 
 import shutil
 
@@ -468,7 +474,7 @@ class StructureDocGenerator(NoTemplatedGenerator):
             # Emit struct Definition
             self.emitline(".. class:: {0}".format(struct.name))
             for ftype, fname, nb in struct.fields:
-                array_str = " ``[{nb}]``".format(nb=nb) if nb > 1 else ""
+                array_str = " ``[{nb}]``".format(nb=nb) if not isinstance(nb, (int, long)) or nb > 1 else ""
                 self.emitline("")
                 self.emitline("    .. attribute:: {fname}".format(fname=fname))
                 self.emitline("")

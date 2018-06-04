@@ -1,5 +1,12 @@
+import sys
 import collections
-import StringIO
+
+if sys.version_info[0] == 3:
+    import io
+    StringIO = io
+else:
+    import StringIO
+
 
 TupleToken = collections.namedtuple('Token', ['value'])
 

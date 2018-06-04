@@ -114,7 +114,7 @@ class WinFuncParser(Parser):
 
 def dbg_lexer(data):
     for i in Lexer(data).token_generation():
-        print i
+        print(i)
 
 def dbg_parser(data):
     return WinFuncParser(data).parse()
